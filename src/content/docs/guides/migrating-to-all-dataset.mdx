@@ -77,7 +77,7 @@ FROM `httparchive.lighthouse.2024_06_01_desktop`
 /* This query will process 17 TB when run. */
 SELECT
   page,
-  JSON_QUERY(lighthouse, '$.audits.largest-contentful-paint.numericValue') AS LCP,
+  lighthouse.audits.`largest-contentful-paint`.numericValue AS LCP,
 FROM `httparchive.all.pages`
 WHERE date = '2024-06-01'
   AND client = 'desktop'
@@ -107,7 +107,7 @@ SELECT
   client,
   wptid,
 -- JSON with the results of the custom metrics,
-  JSON_QUERY(custom_metrics, '$.privacy') AS custom_metrics,
+  custom_metrics.privacy AS custom_metrics,
 FROM `httparchive.all.pages`
 WHERE date = '2022-06-01'
   AND is_root_page
@@ -137,9 +137,9 @@ ORDER BY
 ```sql
 /* This query will process 110 GB when run. */
 SELECT
-  CAST(JSON_VALUE(summary, '$.numDomains') AS INT64) AS numDomains,
+  INT64(summary.numDomains) AS numDomains,
   COUNT(0) pages,
-  ROUND(AVG(CAST(JSON_VALUE(summary, '$.reqTotal') AS INT64)),2) as avg_requests,
+  ROUND(AVG(INT64(summary.reqTotal)),2) as avg_requests,
 FROM `httparchive.all.pages`
 WHERE date = '2024-06-01'
   AND client = 'desktop'
@@ -256,8 +256,8 @@ FROM `httparchive.requests.2024_06_01_desktop`
 SELECT
   page,
   url,
-  JSON_VALUE(summary, '$.mimeType') AS mimeType,
-  CAST(JSON_VALUE(summary, '$.respBodySize') AS INT64) AS respBodySize,
+  STRING(summary.mimeType) AS mimeType,
+  INT64(summary.respBodySize) AS respBodySize,
 FROM `httparchive.all.requests`
 WHERE date = '2024-06-01'
   AND client = 'desktop'
@@ -313,7 +313,7 @@ ORDER BY responseSize100KB ASC
 ```sql
 /* This query will process 10 TB when run. */
 SELECT
-  ROUND(CAST(JSON_VALUE(summary, '$.respBodySize') AS INT64)/1024/100)*100 AS responseSize100KB,
+  ROUND(INT64(summary.respBodySize)/1024/100)*100 AS responseSize100KB,
   COUNT(0) requests,
 FROM `httparchive.all.requests`
 WHERE date = '2024-06-01'

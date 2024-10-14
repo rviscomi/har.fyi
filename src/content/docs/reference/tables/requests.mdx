@@ -51,7 +51,7 @@ Let's check the size of individual requests served from websites across the enti
   /* This query will process 26 GB when run. */
   WITH requests AS (
     SELECT
-      CEIL(CAST(JSON_VALUE(summary, '$.respBodySize') AS INT64)/1024/100)*100 AS responseSize100KB,
+      CEIL(INT64(summary.respBodySize)/1024/100)*100 AS responseSize100KB,
       COUNT(0) OVER () AS total_requests
     FROM
       `httparchive.all.requests` TABLESAMPLE SYSTEM (1 PERCENT)
@@ -59,7 +59,7 @@ Let's check the size of individual requests served from websites across the enti
       date = '2024-06-01'
       AND client = 'desktop'
       AND is_root_page
-      AND CAST(JSON_VALUE(summary, '$.respBodySize') AS INT64) > 0
+      AND INT64(summary.respBodySize) > 0
   )
 
   SELECT
@@ -106,7 +106,7 @@ Let's filter out all of the non-Image content and examine the popularity of vari
   /* This query will process 8 GB when run. */
   WITH requests AS (
     SELECT
-      JSON_VALUE(summary, '$.format') AS format,
+      STRING(summary.format) AS format,
       page,
       COUNT(0) OVER() AS total_requests,
       COUNT(DISTINCT page) OVER() AS total_pages
@@ -168,8 +168,8 @@ Field name | Type | Description
 [`is_main_document`](#is_main_document) | `BOOLEAN` | Whether this request corresponds with the main HTML document of the page, which is the first HTML request after redirects
 [`type`](#type) | `STRING` | Simplified description of the type of resource (script, html, css, text, other, etc)
 [`index`](#index) | `INTEGER` | The sequential 0-based index of the request
-[`payload`](#payload) | `STRING` | JSON-encoded WebPageTest result data for this request
-[`summary`](#summary) | `STRING` | JSON-encoded summarization of request data
+[`payload`](#payload) | [`Request payload`](/reference/structs/request-payload/) | JSON-encoded WebPageTest result data for this request
+[`summary`](#summary) | [`Request summary`](/reference/structs/request-summary/) | JSON-encoded summarization of request data
 [`request_headers`](#request_headers) | <code>ARRAY&lt;<a href="/reference/structs/header/">Header</a>></code> | Request headers
 [`response_headers`](#response_headers) | <code>ARRAY&lt;<a href="/reference/structs/header/">Header</a>></code> | Response headers
 [`response_body`](#response_body) | `STRING` | Text-based response body
@@ -212,7 +212,7 @@ Whether this request corresponds with the main HTML document of the page, which 
 
 ### `type`
 
-Simplified description of the type of resource (script, html, css, text, other, etc)
+Simplified description of the type of resource (script, image, css, html, other, font, text, video, xml, audio, wasm, etc)
 
 ### `index`
 

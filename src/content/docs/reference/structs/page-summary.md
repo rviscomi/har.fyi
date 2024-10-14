@@ -12,508 +12,342 @@ Here's an example of the decoded object:
 
 ```json
 {
-    "metadata": "{\"rank\": 500000, \"page_id\": 24036445, \"tested_url\": \"https://www.example.com/\", \"layout\": \"Desktop\", \"crawl_depth\": 0, \"link_depth\": 0, \"root_page_id\": 24036445, \"root_page_url\": \"https://www.example.com/\", \"root_page_test_id\": \"240709_Dx1UR_EB6N1\"}",
-    "pageid": 24036445,
-    "createDate": 1720729906,
-    "startedDateTime": 1720729879,
-    "archive": "All",
-    "label": "Jul 1 2024",
-    "crawlid": 0,
-    "url": "https://www.example.com/",
-    "urlhash": 56511,
-    "urlShort": "https://www.example.com/",
-    "TTFB": 236,
-    "renderStart": 400,
-    "fullyLoaded": 338,
-    "visualComplete": 400,
-    "onLoad": 325,
-    "gzipTotal": 648,
-    "gzipSavings": 0,
-    "numDomElements": 12,
-    "onContentLoaded": 254,
-    "cdn": "Edgecast",
     "SpeedIndex": 400,
-    "PageSpeed": null,
+    "TTFB": 232,
     "_connections": 1,
-    "_adult_site": false,
-    "avg_dom_depth": 3,
-    "doctype": "html",
-    "document_height": 993,
-    "document_width": 1920,
-    "localstorage_size": 0,
-    "sessionstorage_size": 0,
-    "meta_viewport": "width=device-width, initial-scale=1",
-    "num_iframes": 0,
-    "num_scripts": 0,
-    "num_scripts_sync": 0,
-    "num_scripts_async": 0,
-    "usertiming": 0,
-    "reqTotal": 2,
-    "bytesTotal": 1296,
-    "reqJS": 0,
-    "bytesJS": 0,
-    "reqImg": 1,
-    "bytesImg": 648,
-    "reqJson": 0,
-    "bytesJson": 0,
-    "reqCss": 0,
-    "bytesCss": 0,
-    "reqHtml": 1,
-    "bytesHtml": 648,
-    "reqFont": 0,
-    "bytesFont": 0,
-    "reqOther": 0,
-    "bytesOther": 0,
-    "reqAudio": 0,
     "bytesAudio": 0,
-    "reqVideo": 0,
-    "bytesVideo": 0,
-    "reqText": 0,
-    "bytesText": 0,
-    "reqXml": 0,
-    "bytesXml": 0,
-    "reqGif": 0,
-    "bytesGif": 0,
-    "reqJpg": 0,
-    "bytesJpg": 0,
-    "reqPng": 0,
-    "bytesPng": 0,
-    "reqWebp": 0,
-    "bytesWebp": 0,
-    "reqSvg": 0,
-    "bytesSvg": 0,
-    "reqFlash": 0,
+    "bytesCss": 0,
     "bytesFlash": 0,
-    "numDomains": 1,
-    "maxageNull": 0,
+    "bytesFont": 0,
+    "bytesGif": 0,
+    "bytesHtml": 648,
+    "bytesHtmlDoc": 648,
+    "bytesImg": 648,
+    "bytesJS": 0,
+    "bytesJpg": 0,
+    "bytesJson": 0,
+    "bytesOther": 0,
+    "bytesPng": 0,
+    "bytesSvg": 0,
+    "bytesText": 0,
+    "bytesTotal": 1296,
+    "bytesVideo": 0,
+    "bytesWebp": 0,
+    "bytesXml": 0,
+    "cdn": "Edgecast",
+    "crux": {
+        "collectionPeriod": {
+            "firstDate": {
+                "day": 17,
+                "month": 8,
+                "year": 2024
+            },
+            "lastDate": {
+                "day": 13,
+                "month": 9,
+                "year": 2024
+            }
+        },
+        "key": {
+            "formFactor": "DESKTOP",
+            "url": "https://www.example.com/"
+        },
+        "metrics": {
+            ...
+        }
+    },
+    "fullyLoaded": 323,
+    "gzipSavings": 0,
+    "gzipTotal": 648,
+    "maxDomainReqs": 1,
     "maxage0": 0,
     "maxage1": 0,
     "maxage30": 2,
     "maxage365": 0,
     "maxageMore": 0,
-    "bytesHtmlDoc": 648,
-    "numRedirects": 0,
+    "maxageNull": 0,
+    "numCompressed": 2,
+    "numDomElements": 12,
+    "numDomains": 1,
     "numErrors": 1,
     "numGlibs": 0,
     "numHttps": 2,
-    "numCompressed": 2,
-    "maxDomainReqs": 1,
-    "wptid": "240709_Dx1UR_EB6N1",
-    "wptrun": 1,
-    "rank": 500000
+    "numRedirects": 0,
+    "onContentLoaded": 280,
+    "onLoad": 320,
+    "renderStart": 400,
+    "reqAudio": 0,
+    "reqCss": 0,
+    "reqFlash": 0,
+    "reqFont": 0,
+    "reqGif": 0,
+    "reqHtml": 1,
+    "reqImg": 1,
+    "reqJS": 0,
+    "reqJpg": 0,
+    "reqJson": 0,
+    "reqOther": 0,
+    "reqPng": 0,
+    "reqSvg": 0,
+    "reqText": 0,
+    "reqTotal": 2,
+    "reqVideo": 0,
+    "reqWebp": 0,
+    "reqXml": 0,
+    "visualComplete": 400
 }
 ```
 
 ## Schema
 
-### `metadata`
+### `SpeedIndex`
 
-Additional metadata about the page. Object is similar to the [`metadata`](/reference/blobs/page-metadata/) field in the `pages` table.
-
-- #### `metadata.rank`
-
-  The rank magnitude of the origin, which is a measure of relative popularity.
-
-- #### `metadata.page_id`
-
-  A unique identifier for the page.
-
-- #### `metadata.tested_url`
-
-  The actual URL of the page that was intended to be tested.
-
-- #### `metadata.layout`
-
-  Whether the page was tested in a desktop or mobile environment. Values are `"Desktop"` or `"Mobile"`.
-
-- #### `metadata.crawl_depth`
-
-  Levels of depth from the root page. HTTP Archive is currently configured to crawl one level into a website, so this value will always be `0` or `1`.
-
-- #### `metadata.link_depth`
-
-  At a given crawl depth, this value represents the index in the list of pages being tested. Currently, HTTP Archive only crawls one page per level, so this value is always `0`.
-
-- #### `metadata.root_page_id`
-
-  ID of the root page. At crawl depth `0` this is the same as the `page_id` field.
-
-- #### `metadata.root_page_url`
-
-  URL of the root page.
-
-- #### `metadata.root_page_test_id`
-
-  WebPageTest ID of the root page.
-
-- #### `metadata.retry_count`
-
-  The number of retries.
-
-- #### `metadata.parent_page_id`
-
-  ID of the parent page.
-
-- #### `metadata.parent_page_url`
-
-  URL of the parent page.
-
-- #### `metadata.parent_page_test_id`
-
-  WebPageTest ID of the parent page.
-
-- #### `metadata.visited`
-
-  A list of URLs visited during the crawl.
-
-### `pageid`
-
-The unique identifier for the page (same as `page_id` in metadata).
-
-### `createDate`
-
-The creation date of the record in Unix timestamp format.
-
-### `startedDateTime`
-
-The start date and time of the test in Unix timestamp format.
-
-### `archive`
-
-The archive category (e.g., "All").
-
-### `label`
-
-A label for the test date.
-
-### `crawlid`
-
-The crawl identifier.
-
-### `url`
-
-The URL of the tested page.
-
-### `urlhash`
-
-A hash value of the URL.
-
-### `urlShort`
-
-A shortened version of the URL.
+The Speed Index score.
 
 ### `TTFB`
 
-Time to First Byte in milliseconds.
+The time to first byte
 
-### `renderStart`
+### `_connections`
 
-The time when rendering started in milliseconds.
+The number of connections.
+
+### `bytesAudio`
+
+The number of bytes for audio.
+
+### `bytesCss`
+
+The number of bytes for CSS.
+
+### `bytesFlash`
+
+The number of bytes for Flash.
+
+### `bytesFont`
+
+The number of bytes for font.
+
+### `bytesGif`
+
+The number of bytes for GIF.
+
+### `bytesHtml`
+
+The number of bytes for HTML.
+
+### `bytesHtmlDoc`
+
+The number of bytes for HTML document.
+
+### `bytesImg`
+
+The number of bytes for image.
+
+### `bytesJS`
+
+The number of bytes for JavaScript.
+
+### `bytesJpg`
+
+The number of bytes for JPG.
+
+### `bytesJson`
+
+The number of bytes for JSON.
+
+### `bytesOther`
+
+The number of bytes for other.
+
+### `bytesPng`
+
+The number of bytes for PNG.
+
+### `bytesSvg`
+
+The number of bytes for SVG.
+
+### `bytesText`
+
+The number of bytes for text.
+
+### `bytesTotal`
+
+The total number of bytes.
+
+### `bytesVideo`
+
+The number of bytes for video.
+
+### `bytesWebp`
+
+The number of bytes for WebP.
+
+### `bytesXml`
+
+The number of bytes for XML.
+
+### `cdn`
+
+The Content Delivery Network provider.
+
+### `crux`
+
+The crux data.
 
 ### `fullyLoaded`
 
-The time when the page was fully loaded in milliseconds.
-
-### `visualComplete`
-
-The time when visual loading was complete in milliseconds.
-
-### `onLoad`
-
-The time when the onLoad event was triggered in milliseconds.
-
-### `gzipTotal`
-
-Total size of compressed data in bytes.
+The fully loaded time.
 
 ### `gzipSavings`
 
-Bytes saved due to gzip compression.
+The bytes saved due to gzip compression.
+
+### `gzipTotal`
+
+The total bytes in gzip compression.
+
+### `maxDomainReqs`
+
+The maximum number of requests to a domain.
+
+### `maxage0`
+
+The maximum number of requests with a max-age of 0.
+
+### `maxage1`
+
+The maximum number of requests with a max-age of 1.
+
+### `maxage30`
+
+The maximum number of requests with a max-age of 30.
+
+### `maxage365`
+
+The maximum number of requests with a max-age of 365.
+
+### `maxageMore`
+
+The maximum number of requests with a max-age greater than 365.
+
+### `maxageNull`
+
+The maximum number of requests with a max-age of null.
+
+### `numCompressed`
+
+The number of compressed files.
 
 ### `numDomElements`
 
 The number of DOM elements.
 
-### `onContentLoaded`
-
-The time when the DOMContentLoaded event was triggered in milliseconds.
-
-### `cdn`
-
-The Content Delivery Network used.
-
-### `SpeedIndex`
-
-The Speed Index score.
-
-### `PageSpeed`
-
-The PageSpeed score.
-
-### `_connections`
-
-The number of connections made.
-
-### `_adult_site`
-
-Boolean indicating if the site is an adult site.
-
-### `avg_dom_depth`
-
-Average DOM depth.
-
-### `doctype`
-
-The document type.
-
-### `document_height`
-
-The height of the document.
-
-### `document_width`
-
-The width of the document.
-
-### `localstorage_size`
-
-The size of local storage used.
-
-### `sessionstorage_size`
-
-The size of session storage used.
-
-### `meta_viewport`
-
-The meta viewport tag content.
-
-### `num_iframes`
-
-The number of iframes.
-
-### `num_scripts`
-
-The number of script tags.
-
-### `num_scripts_sync`
-
-The number of synchronous scripts.
-
-### `num_scripts_async`
-
-The number of asynchronous scripts.
-
-### `usertiming`
-
-User timing data.
-
-### `reqTotal`
-
-Total number of requests made.
-
-### `bytesTotal`
-
-Total bytes transferred.
-
-### `reqJS`
-
-Number of JavaScript requests.
-
-### `bytesJS`
-
-Bytes transferred for JavaScript.
-
-### `reqImg`
-
-Number of image requests.
-
-### `bytesImg`
-
-Bytes transferred for images.
-
-### `reqJson`
-
-Number of JSON requests.
-
-### `bytesJson`
-
-Bytes transferred for JSON.
-
-### `reqCss`
-
-Number of CSS requests.
-
-### `bytesCss`
-
-Bytes transferred for CSS.
-
-### `reqHtml`
-
-Number of HTML requests.
-
-### `bytesHtml`
-
-Bytes transferred for HTML.
-
-### `reqFont`
-
-Number of font requests.
-
-### `bytesFont`
-
-Bytes transferred for fonts.
-
-### `reqOther`
-
-Number of other types of requests.
-
-### `bytesOther`
-
-Bytes transferred for other types of requests.
-
-### `reqAudio`
-
-Number of audio requests.
-
-### `bytesAudio`
-
-Bytes transferred for audio.
-
-### `reqVideo`
-
-Number of video requests.
-
-### `bytesVideo`
-
-Bytes transferred for video.
-
-### `reqText`
-
-Number of text requests.
-
-### `bytesText`
-
-Bytes transferred for text.
-
-### `reqXml`
-
-Number of XML requests.
-
-### `bytesXml`
-
-Bytes transferred for XML.
-
-### `reqGif`
-
-Number of GIF requests.
-
-### `bytesGif`
-
-Bytes transferred for GIFs.
-
-### `reqJpg`
-
-Number of JPG requests.
-
-### `bytesJpg`
-
-Bytes transferred for JPGs.
-
-### `reqPng`
-
-Number of PNG requests.
-
-### `bytesPng`
-
-Bytes transferred for PNGs.
-
-### `reqWebp`
-
-Number of WebP requests.
-
-### `bytesWebp`
-
-Bytes transferred for WebP.
-
-### `reqSvg`
-
-Number of SVG requests.
-
-### `bytesSvg`
-
-Bytes transferred for SVG.
-
-### `reqFlash`
-
-Number of Flash requests.
-
-### `bytesFlash`
-
-Bytes transferred for Flash.
-
 ### `numDomains`
 
-Number of unique domains.
-
-### `maxageNull`
-
-Number of resources with no max-age set.
-
-### `maxage0`
-
-Number of resources with max-age 0.
-
-### `maxage1`
-
-Number of resources with max-age 1 day.
-
-### `maxage30`
-
-Number of resources with max-age 30 days.
-
-### `maxage365`
-
-Number of resources with max-age 365 days.
-
-### `maxageMore`
-
-Number of resources with max-age more than 365 days.
-
-### `bytesHtmlDoc`
-
-Bytes transferred for the HTML document.
-
-### `numRedirects`
-
-Number of redirects.
+The number of domains.
 
 ### `numErrors`
 
-Number of errors.
+The number of errors.
 
 ### `numGlibs`
 
-Number of GLib issues.
+The number of glibs.
 
 ### `numHttps`
 
-Number of HTTPS requests.
+The number of HTTPS requests.
 
-### `numCompressed`
+### `numRedirects`
 
-Number of compressed requests.
+The number of redirects.
 
-### `maxDomainReqs`
+### `onContentLoaded`
 
-Maximum number of requests to a single domain.
+The onContentLoaded time.
 
-### `wptid`
+### `onLoad`
 
-WebPageTest ID.
+The onLoad time.
 
-### `wptrun`
+### `renderStart`
 
-WebPageTest run number.
+The renderStart time.
 
-### `rank`
+### `reqAudio`
 
-The rank magnitude of the origin, which is a measure of relative popularity.
+The number of bytes for audio.
+
+### `reqCss`
+
+The number of bytes for CSS.
+
+### `reqFlash`
+
+The number of bytes for Flash.
+
+### `reqFont`
+
+The number of bytes for font.
+
+### `reqGif`
+
+The number of bytes for GIF.
+
+### `reqHtml`
+
+The number of bytes for HTML.
+
+### `reqImg`
+
+The number of bytes for image.
+
+### `reqJS`
+
+The number of bytes for JavaScript.
+
+### `reqJpg`
+
+The number of bytes for JPG.
+
+### `reqJson`
+
+The number of bytes for JSON.
+
+### `reqOther`
+
+The number of bytes for other.
+
+### `reqPng`
+
+The number of bytes for PNG.
+
+### `reqSvg`
+
+The number of bytes for SVG.
+
+### `reqText`
+
+The number of bytes for text.
+
+### `reqTotal`
+
+The total number of bytes for requests.
+
+### `reqVideo`
+
+The number of bytes for video.
+
+### `reqWebp`
+
+The number of bytes for WebP.
+
+### `reqXml`
+
+The number of bytes for XML.
+
+### `visualComplete`
+
+The visualComplete time.

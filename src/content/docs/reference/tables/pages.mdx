@@ -51,7 +51,7 @@ desktop | false | 11585746
 WITH pages AS (
   SELECT
     client,
-    CAST(JSON_VALUE(summary, '$.bytesTotal') AS INT64) AS page_weight
+    INT64(summary.bytesTotal) AS page_weight
   FROM
     `httparchive.all.pages` TABLESAMPLE SYSTEM (1 PERCENT)
   WHERE
@@ -97,8 +97,8 @@ Also note that for demonstration purposes, this query processes a 1% sample of t
 /* This query will process 0.6 GB when run. */
 WITH pages_summary AS (
   SELECT
-    CAST(JSON_VALUE(summary, '$.reqTotal') AS INT64) AS reqTotal,
-    CAST(JSON_VALUE(summary, '$.numDomains') AS INT64) AS numDomains
+    INT64(summary.reqTotal) AS reqTotal,
+    INT64(summary.numDomains) AS numDomains
   FROM `httparchive.all.pages` TABLESAMPLE SYSTEM (1 PERCENT)
   WHERE date = "2024-06-01"
     AND client = 'mobile'
@@ -138,12 +138,12 @@ Field name | Type | Description
 [`rank`](#rank) | `INTEGER` | Site popularity rank, from CrUX
 [`wptid`](#wptid) | `STRING` | ID of the WebPageTest results
 [`payload`](#payload) | [`HAR`](/reference/blobs/har/) | JSON-encoded WebPageTest results for the page
-[`summary`](#summary) | `STRING` | JSON-encoded summarization of the page-level data
-[`custom_metrics`](#custom_metrics) | `STRING` | JSON-encoded test results of the custom metrics
+[`summary`](#summary) | [`Page summary`](/reference/structs/page-summary/) | JSON-encoded summarization of the page-level data
+[`custom_metrics`](#custom_metrics) | [`Custom metrics`](/reference/structs/custom-metrics/) | JSON-encoded test results of the custom metrics
 [`lighthouse`](#lighthouse) | [`Lighthouse`](/reference/blobs/lighthouse/) | JSON-encoded Lighthouse report
 [`features`](#features) | <code>ARRAY&lt;<a href="/reference/structs/feature/">Feature</a>></code> | Blink features detected at runtime
 [`technologies`](#technologies) | <code>ARRAY&lt;<a href="/reference/structs/technology/">Technology</a>></code> | Technologies detected at runtime
-[`metadata`](#metadata) | `STRING` | Additional metadata about the test
+[`metadata`](#metadata) | [`Page metadata`](/reference/blobs/page-metadata/) | Additional metadata about the test
 
 ### `date`
 
